@@ -1,0 +1,452 @@
+/* ---------- Base Styles ---------- */
+body {
+  font-family: 'Lora', serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Navigation Bar ---------- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0077cc;
+  color: white;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+nav button {
+  background: white;
+  color: #0077cc;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+nav button:hover {
+  background: #005fa3;
+  color: white;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  position: fixed;
+  left: 20px;
+  top: 120px;
+  width: 180px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  line-height: 1.8;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  color: #0077cc;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.sidebar a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #0077cc;
+  text-decoration: underline;
+}
+
+/* ---------- Main Content ---------- */
+main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* ---------- Card / Section ---------- */
+section, .card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+/* ---------- Profile Image ---------- */
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: block;
+  margin: 15px auto;
+  object-fit: cover;
+}
+
+/* ---------- Scroll to Top Button ---------- */
+#top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  font-size: 18px;
+  transition: background 0.3s ease;
+  z-index: 1001;
+}
+
+#top-btn:hover {
+  background-color: #005fa3;
+}
+
+/* ---------- Buttons ---------- */
+button, .btn {
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover, .btn:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+/* ---------- Projects Section ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--bg);
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: 0.4s;
+  text-align: center;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) translateZ(30px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #0078ff;
+  font-weight: bold;
+}
+
+
+/* ---------- Dark Mode ---------- */
+.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.dark-mode nav {
+  background-color: #1f1f1f;
+}
+
+.dark-mode .sidebar {
+  background: #1f1f1f;
+  color: #eee;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+}
+
+.dark-mode .card {
+  background-color: #222;
+  color: #ddd;
+}
+/* ---------- Dark Mode ---------- */
+.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.dark-mode nav {
+  background-color: #1f1f1f;
+}
+
+.dark-mode .sidebar {
+  background: #1f1f1f;
+  color: #eee;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+}
+
+/* ✅ FIX: Sidebar Links in Dark Mode */
+.dark-mode .sidebar a {
+  color: #ccc;
+}
+.dark-mode .sidebar a:hover {
+  color: #66b3ff;
+}
+
+/* ---------- Dark Mode Cards ---------- */
+.dark-mode .card {
+  background-color: #222;
+  color: #ddd;
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+  main {
+    margin-left: 0;
+  }
+  body {
+    padding: 10px;
+  }
+  section {
+    padding: 15px;
+  }
+}
+/* ===========================
+   3D / Depth Effects (ADD)
+   =========================== */
+
+/* container perspective */
+body, main {
+  perspective: 1200px; /* controls depth strength */
+  -webkit-perspective: 1200px;
+}
+
+/* make children preserve 3D space */
+main, .card {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Card base 3D look */
+.card {
+  transition: transform 0.45s cubic-bezier(.2,.9,.3,1), box-shadow 0.45s;
+  transform: translateZ(0);
+  box-shadow: 0 6px 18px rgba(12,24,40,0.08), 0 1px 3px rgba(12,24,40,0.04);
+  position: relative;
+  overflow: visible;
+}
+
+/* Depth pseudo-layer for card (subtle front glow) */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  pointer-events: none;
+  transform: translateZ(30px) scale(0.98);
+  filter: blur(12px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* On hover — tilt and pop-out */
+.card:hover {
+  transform: translateY(-8px) translateZ(40px) rotateX(4deg);
+  box-shadow: 0 18px 50px rgba(8,20,40,0.18);
+}
+.card:hover::before {
+  opacity: 0.9;
+}
+
+/* Profile photo pop-out */
+.profile-photo {
+  transition: transform 0.45s cubic-bezier(.2,.9,.3,1), box-shadow 0.45s;
+  transform-origin: center;
+  transform: translateZ(30px);
+  box-shadow: 0 8px 26px rgba(10,20,40,0.12);
+  z-index: 2;
+}
+.card:hover .profile-photo {
+  transform: translateZ(70px) scale(1.03);
+}
+
+/* Sidebar subtle 3D */
+.sidebar {
+  transition: transform 0.45s cubic-bezier(.2,.9,.3,1), box-shadow 0.45s;
+  transform-origin: left center;
+  transform: translateZ(0);
+}
+.sidebar:hover {
+  transform: translateX(-6px) translateZ(30px) rotateY(3deg);
+  box-shadow: 0 20px 50px rgba(8,20,40,0.12);
+}
+
+/* Nav button 3D */
+nav button, #theme-toggle {
+  transform: translateZ(10px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+nav button:active, #theme-toggle:active {
+  transform: translateZ(6px) translateY(1px);
+}
+
+/* Top button 3D */
+#top-btn {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: translateZ(10px);
+}
+#top-btn:hover {
+  transform: translateZ(30px) scale(1.04);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* parallax decorative shadow (subtle) */
+.card .depth-shadow {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  border-radius: inherit;
+  box-shadow: 0 30px 60px rgba(8,20,40,0.08);
+  z-index: -1;
+  transform: translateZ(-20px) scale(0.98);
+  transition: transform 0.45s, opacity 0.45s;
+  opacity: 0.95;
+}
+
+/* prefer-reduced-motion & mobile safe */
+@media (prefers-reduced-motion: reduce), (max-width: 900px) {
+  body, main { perspective: none; -webkit-perspective: none; }
+  .card, .sidebar, .profile-photo, nav button, #top-btn { transform: none !important; transition: none !important; box-shadow: none !important; }
+  .card::before { display: none; }
+}
+/* ---------- Responsive Design ---------- */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .card {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .profile-photo {
+    width: 130px;
+    height: 130px;
+  }
+}
+/* ---------- Responsive Design ---------- */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+
+  main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .card {
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  .profile-photo {
+    width: 130px;
+    height: 130px;
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent, #0078ff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #005fcc;
+}
+.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.7s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}

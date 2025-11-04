@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranjit Prasad Sharma - Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <h1>Ranjit Prasad Sharma</h1>
+    <button id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Contents</h3>
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#story">My Story</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <section id="about" class="card">
+        <div class="depth-shadow"></div>
+      <h2>About Me</h2>
+      <img src="images/yourphoto.jpg" alt="My Photo" class="profile-photo" />
+      <p>Hello! I'm <strong>Ranjit Prasad Sharma</strong>, a passionate learner and aspiring web developer. This portfolio showcases my journey, skills, and story — inspired by Wikipedia-style design and simplicity.</p>
+    </section>
+
+    <section id="education" class="card">
+        <div class="depth-shadow"></div>
+      <h2>Education</h2>
+      <ul>
+        <li>Diploma in Computer Science (5th Sem)</li>
+        <li>High School – Completed with strong academic record</li>
+      </ul>
+    </section>
+
+    <section id="skills" class="card">
+        <div class="depth-shadow"></div>
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript (Basics)</li>
+        <li>Learning AI-assisted web development</li>
+        <li>Problem solving & logical thinking</li>
+      </ul>
+    </section>
+
+    <section id="story" class="card">
+        <div class="depth-shadow"></div>
+      <h2>My Story</h2>
+      <p>My story began with curiosity about how websites work. Starting with no knowledge, I learned step-by-step using AI guidance and built this website myself. My goal is to grow into a full-stack developer and build meaningful digital experiences.</p>
+    </section>
+    <section id="contact" class="card">
+  <div class="depth-shadow"></div>
+  <h2>Contact Me</h2>
+  <form id="contact-form">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <label for="email">Your Email</label>
+    <input type="email" id="email" placeholder="Enter your email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" rows="5" placeholder="Write your message..."></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+<!-- ---------- Projects Section ---------- -->
+<section id="projects" class="card">
+  <div class="depth-shadow"></div>
+  <h2>My Projects</h2>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>My first responsive personal website with dark mode & 3D effects.</p>
+      <a href="#" target="_blank">View</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Mini Calculator</h3>
+      <p>A small JavaScript-based calculator project.</p>
+      <a href="#" target="_blank">View</a>
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <!-- Scroll to Top Button -->
+  <button id="top-btn">⬆️</button>
+
+  <!-- JavaScript: Dark Mode -->
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      toggleBtn.textContent = document.body.classList.contains("dark-mode")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
+  </script>
+
+  <!-- JavaScript: Scroll-to-Top -->
+  <script>
+    const topBtn = document.getElementById("top-btn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 400) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    });
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+  <script>
+  // 3D tilt based on mouse position — subtle and performant
+  (function() {
+    const cards = document.querySelectorAll('.card');
+    const strength = 12; // lower = subtler, higher = stronger
+
+    // Only enable on wide screens
+    if (window.innerWidth <= 900) return;
+
+    function handleMove(e) {
+      const x = e.clientX;
+      const y = e.clientY;
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      const dx = (x - cx) / cx; // -1 .. 1
+      const dy = (y - cy) / cy; // -1 .. 1
+
+      cards.forEach(card => {
+        // bounding to card center for more natural tilt
+        const rect = card.getBoundingClientRect();
+        const cardCx = rect.left + rect.width / 2;
+        const cardCy = rect.top + rect.height / 2;
+        const rx = (x - cardCx) / rect.width;
+        const ry = (y - cardCy) / rect.height;
+
+        const rotateY = (rx * strength).toFixed(2);
+        const rotateX = (-ry * strength / 1.4).toFixed(2);
+
+        card.style.transform = `translateY(-6px) translateZ(30px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        const shadow = card.querySelector('.depth-shadow');
+        if (shadow) {
+          // subtle counter transform for shadow
+          shadow.style.transform = `translateZ(-18px) translateX(${(-rotateY*0.6)}px) translateY(${(rotateX*0.4)}px) scale(0.98)`;
+        }
+      });
+    }
+
+    function resetCards() {
+      cards.forEach(card => {
+        card.style.transform = '';
+        const shadow = card.querySelector('.depth-shadow');
+        if (shadow) shadow.style.transform = '';
+      });
+    }
+
+    let rafId = null;
+    window.addEventListener('mousemove', (e) => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => handleMove(e));
+    });
+    window.addEventListener('mouseleave', resetCards);
+    window.addEventListener('blur', resetCards);
+  })();
+</script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.card').forEach(card => {
+    card.classList.add('hidden');
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>
